@@ -1,9 +1,13 @@
-from django.urls import path
+from django.urls import path, include
 from . import views
+from rest_framework.routers import DefaultRouter
 
-from . import views
+router = DefaultRouter()
+router.register(r'list', views.RidesListViewset, basename='rides')
+router.register(r'events', views.RideEventViewSet, basename='ride-events')
+
+
 
 urlpatterns = [
-    # path("rides/", views.RideRequestListCreate.as_view(), name="ride-request-create-view"),
-    # path("users/", views.UserListCreate.as_view(), name="user-list-create-view"),
+    path("", include(router.urls)),
 ]
