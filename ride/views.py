@@ -1,15 +1,6 @@
-import datetime
-from rest_framework.response import Response
 from rest_framework import permissions, viewsets
-from django.contrib.auth.models import User
-from .models import Ride, RideEvent, STATUS_CHOICES
+from .models import Ride, RideEvent
 from .serializers import RideSerializer, RideEventSerializer
-from rest_framework.pagination import PageNumberPagination
-
-class StandardResultsSetPagination(PageNumberPagination):
-    page_size = 10
-    page_size_query_param = 'page_size'
-    max_page_size = 100
 
 class RidesListViewset(viewsets.ModelViewSet):
     permission_classes = [permissions.IsAdminUser]
